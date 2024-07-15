@@ -1,0 +1,39 @@
+.banniere {
+  background-color: #fff;
+  padding: 10px;
+}
+
+.recherche {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+
+.recherche button[type="button"] {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+  border-radius: 20px;
+  padding: 10px;
+  margin-inline: 8px;
+}
+
+.first{
+  display: flex;
+  justify-content: space-between;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+  border-radius: 10px;
+  padding: 10px;
+  margin-inline: 8px;
+}
+

@@ -1,0 +1,22 @@
+<div>
+  <table class="first">
+    <tr>
+      <th (click)="sort('nom')">Nom</th>
+      <th (click)="sort('population')">Population</th>
+      <th (click)="sort('superficie')">Superficie</th>
+      <th (click)="sort('continent')">Continent</th>
+      <th (click)="sort('pib')">PIB</th>
+      <th>Image</th>
+    </tr>
+    <tr *ngFor="let country of countries; let i = index">
+      <td>{{ country.nom }}</td>
+      <td>{{ country.population }}</td>
+      <td>{{ country.superficie }}</td>
+      <td>{{ country.continent }}</td>
+      <td>{{ country.pib }}</td>
+      <td> </td>
+      <td>
+      </td>
+    </tr>
+  </table>
+</div>
