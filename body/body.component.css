@@ -12,9 +12,27 @@ th, td {
   background-color: #f0f0f0;
 
 }
+.filter-icon {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;    /* Centers vertically */
+  height: 50px;          /* Set height as needed */
+}
+
+.filter-icon button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 3px; /* Adjust size */
+}
+
+.filter-icon button:hover {
+  color: #007bff; /* Change color on hover */
+}
+
 
 
 .table{
   padding: 3%;
-  padding-bottom: 30%;
+  padding-bottom: 3%;
 }

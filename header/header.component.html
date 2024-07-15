@@ -18,15 +18,15 @@
 
   <div *ngIf="showModal" class="modal">
     <div class="modal-content">
-      <span (click)="closeModal()" class="close">&times;</span>
       <h2>Ajouter un pays</h2>
+      <span (click)="closeModal()" class="close">&times;</span> <br>
       <input [(ngModel)]="newCountry.nom" placeholder="Nom" />
       <input [(ngModel)]="newCountry.population" placeholder="Population" />
       <input [(ngModel)]="newCountry.superficie" placeholder="Superficie" />
       <input [(ngModel)]="newCountry.continent" placeholder="Continent" />
       <input [(ngModel)]="newCountry.pib" placeholder="PIB" />
       <input [(ngModel)]="newCountry.imageUrl" placeholder="Image URL" />
-      <button (click)="addCountry()">Ajouter</button>
+      <button  type="button" (click)="addCountry()">Ajouter</button>
     </div>
  </div>
 </div>

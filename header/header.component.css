@@ -28,12 +28,20 @@
   justify-content: space-between;
 }
 
-.actions button {
+ button {
   background-color: white;
   color: black;
   border: 2px solid #008CBA;
   border-radius: 10px;
   padding: 10px;
   margin-inline: 8px;
+}
+
+input {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+
 }
 

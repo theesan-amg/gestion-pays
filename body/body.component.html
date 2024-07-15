@@ -1,20 +1,40 @@
 <div>
   <table class="first">
     <tr>
-      <th (click)="sort('nom')">Nom</th>
-      <th (click)="sort('population')">Population</th>
-      <th (click)="sort('superficie')">Superficie</th>
-      <th (click)="sort('continent')">Continent</th>
-      <th (click)="sort('pib')">PIB</th>
+      <th (click)="sort('nom')">Nom <span class="material-icons" (click)="filterBy('nom')">filter_list</span></th>
+      <th (click)="sort('population')">Population<span class="material-icons" (click)="filterBy('population')">filter_list</span></th>
+      <th (click)="sort('superficie')">Superficie<span class="material-icons" (click)="filterBy('superficie')">filter_list</span></th>
+      <th (click)="sort('continent')">Continent<span class="material-icons" (click)="filterBy('continent')">filter_list</span></th>
+      <th (click)="sort('pib')">PIB<span class="material-icons" (click)="filterBy('pib')">filter_list</span></th>
       <th>Image</th>
+      <th></th>
     </tr>
     <tr *ngFor="let country of countries; let i = index">
-      <td>{{ country.nom }}</td>
+      <td>{{ country.nom }} </td>
       <td>{{ country.population }}</td>
       <td>{{ country.superficie }}</td>
       <td>{{ country.continent }}</td>
       <td>{{ country.pib }}</td>
       <td><img [src]="country.imageUrl" alt="{{ country.nom }}" /></td>
+      <td>
+        <span class="material-icons" (click)="editCountry(country)">create</span>
+      </td>
     </tr>
   </table>
+
+  <!-- Modal pour Édition -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close">&times;</span>
+      <h2>Modifier le pays</h2>
+      <input [(ngModel)]="selectedCountry.nom" placeholder="Nom" />
+      <input [(ngModel)]="selectedCountry.population" placeholder="Population" />
+      <input [(ngModel)]="selectedCountry.superficie" placeholder="Superficie" />
+      <input [(ngModel)]="selectedCountry.continent" placeholder="Continent" />
+      <input [(ngModel)]="selectedCountry.pib" placeholder="PIB" />
+      <input [(ngModel)]="selectedCountry.imageUrl" placeholder="Image URL" />
+      <button (click)="saveCountry()">Sauvegarder</button>
+    </div>
+  </div>
+
 </div>
