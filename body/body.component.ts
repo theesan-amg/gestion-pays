@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CountryService} from "../service/country.service";
 import {Country} from "../model/country.model";
 import {CountryDetailComponent} from "../country-detail/country-detail.component";
@@ -9,8 +9,7 @@ import {CountryDetailComponent} from "../country-detail/country-detail.component
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-
-  countries: Country[];
+  @Input() countries: Country[] = [];
 
   constructor(private countryService: CountryService) {
     this.countries = this.countryService.getCountries();

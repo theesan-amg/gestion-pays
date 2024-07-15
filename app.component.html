@@ -1,2 +1,2 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<app-header (searchEvent)="onSearch($event)" (addCountryEvent)="addCountry($event)"></app-header>
+<app-body [countries]="filteredCountries"></app-body>

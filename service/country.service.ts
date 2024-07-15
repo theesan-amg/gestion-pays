@@ -11,6 +11,8 @@ export class CountryService {
     // Ajoutez des pays par défaut
     this.countries = [
       { nom: 'France', population: 65273511, superficie: 551695, continent: 'Europe', pib: 2715518, imageUrl: 'url_to_image' },
+      { nom: 'Allemagne', population: 83783942, superficie: 357582, continent: 'Europe', pib: 3848172, imageUrl: 'url_to_image' },
+      { nom: 'Japon', population: 126476461, superficie: 377975, continent: 'Asie', pib: 5179280, imageUrl: 'url_to'},
       // Ajoutez d'autres pays ici
     ];
   }
@@ -27,6 +29,9 @@ export class CountryService {
     this.countries[index] = country;
   }
 
+  searchCountries(term: string): Country[] {
+    return this.countries.filter(country => country.nom.toLowerCase().includes(term.toLowerCase()));
+  }
 
   deleteCountry(index: number) {
     this.countries.splice(index, 1);

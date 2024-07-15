@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {CountryService} from "../service/country.service";
+import {Country} from "../model/country.model";
 
 @Component({
   selector: 'app-header',
@@ -6,13 +9,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Output() searchEvent = new EventEmitter<string>();
+  @Output() addCountryEvent = new EventEmitter<Country>();
 
-    ngOnInit(): void {
-    }
 
+  countries: Country[] = [];
+  allCountries: Country[] = [];
+  showModal = false;
+  newCountry: Country = { nom: '', population: 0, superficie: 0, continent: '', pib: 0, imageUrl: '' };
+
+
+
+  constructor(private countryService: CountryService) {}
+
+  ngOnInit(): void {
+    this.allCountries = this.countryService.getCountries();
+    this.countries = this.allCountries;
+  }
+
+  onSearch(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.searchEvent.emit(target.value);
+  }
+
+  openAddCountryModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.newCountry = { nom: '', population: 0, superficie: 0, continent: '', pib: 0, imageUrl: '' }; // Reset
+  }
+
+  addCountry() {
+    this.addCountryEvent.emit(this.newCountry);
+    this.closeModal();
+  }
 /*
-  constructor(private countryService: CountryService, public dialog: MatDialog) {}
-
   search(query: string) {
     this.countryService.filterCountries(query);
   }

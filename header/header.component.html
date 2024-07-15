@@ -1,20 +1,32 @@
 <div class="banniere">
   <div class="first">
-    <h2 >Gestion des pays</h2>
+    <h2>Gestion des pays</h2>
 
     <div class="recherche">
-
-      <button type="button">Rechercher</button>
       <input
-        placeholder="Rechercher..." />
+        placeholder="Rechercher..."
+        (input)="onSearch($event)" />
 
       <button type="button">Exporter en csv</button>
-
     </div>
   </div>
 
   <div class="actions">
     <a></a>
-    <button type="button">Ajouter</button>
+    <button type="button" (click)="openAddCountryModal()">Ajouter</button>
   </div>
+
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close">&times;</span>
+      <h2>Ajouter un pays</h2>
+      <input [(ngModel)]="newCountry.nom" placeholder="Nom" />
+      <input [(ngModel)]="newCountry.population" placeholder="Population" />
+      <input [(ngModel)]="newCountry.superficie" placeholder="Superficie" />
+      <input [(ngModel)]="newCountry.continent" placeholder="Continent" />
+      <input [(ngModel)]="newCountry.pib" placeholder="PIB" />
+      <input [(ngModel)]="newCountry.imageUrl" placeholder="Image URL" />
+      <button (click)="addCountry()">Ajouter</button>
+    </div>
+ </div>
 </div>
