@@ -1,0 +1,12 @@
+<div *ngIf="country" class="container">
+  <div class="country-details">
+    <h1>{{ country.nom }}</h1>
+    <p>Population: {{ country.population }}</p>
+    <p>Superficie: {{ country.superficie }}</p>
+    <p>Continent: {{ country.continent }}</p>
+    <p>PIB: {{ country.pib }}</p>
+  </div>
+  <div class="img-pays">
+    <img [src]="country.imageUrl" alt="{{ country.nom }}" />
+  </div>
+</div>

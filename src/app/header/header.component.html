@@ -1,0 +1,49 @@
+<div class="banniere">
+ <div class="main-block">
+  <div class="first">
+    <h2>{{ title }}</h2>
+    <div class="recherche" >
+      <button type="button" (click)="toggleSearchInput()" *ngIf="title === 'Gestion des pays'"
+      >
+        {{ showSearchInput ? 'Cacher recherche' : 'Rechercher' }}
+      </button>
+      <input
+        *ngIf="showSearchInput && title === 'Gestion des pays'"
+        placeholder="Rechercher..."
+        (input)="onSearch($event)"
+      />
+      <button type="button" *ngIf="title === 'Gestion des pays'" (click)="exportToCSV()">Exporter en CSV</button>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a></a>
+    <button type="button" *ngIf="title === 'Gestion des pays'" (click)="openAddCountryModal()">Ajouter</button>
+  </div>
+
+   <div class="actions">
+     <button class="returnBtn" type="button"  *ngIf="title !== 'Gestion des pays'" (click)="navigateToHome()">Gestion des pays</button>
+   </div>
+ </div>
+
+
+
+
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <h2>Ajouter un pays</h2>
+      <span (click)="closeModal()" class="close">&times;</span> <br>
+      <input [(ngModel)]="newCountry.nom" placeholder="Nom" />
+      <input [(ngModel)]="newCountry.population" placeholder="Population" />
+      <input [(ngModel)]="newCountry.superficie" placeholder="Superficie" />
+      <select [(ngModel)]="newCountry.continent">
+        <option *ngFor="let continent of getContinents()" [value]="continent">{{ continent }}</option>
+      </select>
+      <input [(ngModel)]="newCountry.pib" placeholder="PIB" />
+      <img *ngIf="newCountry.imageUrl" [src]="newCountry.imageUrl"  />
+      <input  type="file" (change)="onFileSelected($event)" />
+      <button  type="button" (click)="addCountry()">Ajouter</button>
+    </div>
+ </div>
+</div>
+

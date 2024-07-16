@@ -1,0 +1,21 @@
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 5%;
+}
+
+.country-details {
+  flex: 1;
+}
+
+.img-pays {
+  flex: 0 0 auto;
+  margin-left: 20px;
+}
+
+.img-pays img {
+  max-width: 100%;
+  height: auto;
+}

@@ -1,0 +1,45 @@
+<div>
+  <table class="first">
+    <tr class="main-column">
+      <th (click)="sort('nom')">Nom <span class="material-icons" (click)="filterBy('nom')">filter_list</span></th>
+      <th (click)="sort('population')">Population<span class="material-icons" (click)="filterBy('population')">filter_list</span></th>
+      <th (click)="sort('superficie')">Superficie<span class="material-icons" (click)="filterBy('superficie')">filter_list</span></th>
+      <th (click)="sort('continent')">Continent<span class="material-icons" (click)="filterBy('continent')">filter_list</span></th>
+      <th (click)="sort('pib')">PIB<span class="material-icons" (click)="filterBy('pib')">filter_list</span></th>
+      <th>Image</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let country of countries; let i = index" [ngClass]="getRowClass(i)" >
+      <td (click)="goToCountryDetail(country.nom)">{{ country.nom }} </td>
+      <td (click)="goToCountryDetail(country.nom)" >{{ country.population }}</td>
+      <td (click)="goToCountryDetail(country.nom)">{{ country.superficie }}</td>
+      <td (click)="goToCountryDetail(country.nom)">{{ country.continent }}</td>
+      <td (click)="goToCountryDetail(country.nom)">{{ country.pib }}</td>
+      <td>
+        <img *ngIf="country.imageUrl" [src]="country.imageUrl" />
+      </td>
+      <td>
+        <span class="material-icons" (click)="editCountry(country)">create</span>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Modal pour Édition -->
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close">&times;</span>
+      <h2>Modifier le pays</h2>
+      <input [(ngModel)]="selectedCountry.nom" placeholder="Nom" />
+      <input [(ngModel)]="selectedCountry.population" placeholder="Population" />
+      <input [(ngModel)]="selectedCountry.superficie" placeholder="Superficie" />
+      <select [(ngModel)]="selectedCountry.continent">
+        <option *ngFor="let continent of getContinents()" [value]="continent">{{ continent }}</option>
+      </select>      <input [(ngModel)]="selectedCountry.pib" placeholder="PIB" />
+      <input type="file" (change)="onFileSelectedForEdit($event)" />
+      <img *ngIf="selectedCountry.imageUrl" [src]="selectedCountry.imageUrl" alt="Uploaded Image" />
+      <button (click)="saveCountry()">Sauvegarder</button>
+    </div>
+  </div>
+
+</div>
+
